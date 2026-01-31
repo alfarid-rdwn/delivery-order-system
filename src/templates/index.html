@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delivery Order List</title>
+</head>
+<body>
+    <h1>Delivery Order List</h1>
+
+    <a href="/create">Create New Delivery Order</a>
+
+    <ul>
+        {% for order in orders %}
+            <li>
+                {{ order.order_id }} - {{ order.customer_name }} - {{ order.status }}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
