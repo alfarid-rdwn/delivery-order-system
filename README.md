@@ -11,27 +11,40 @@ The scope of this system includes:
 - Update delivery order status
 - Delivery confirmation
 
-This project does not cover sales order processing, payment, accounting, or advanced logistics features.
+This project does not include sales order processing, payment, accounting, or advanced logistics features.
 
 ## Development Methodology
 This project uses **Agile methodology**.  
-The system is developed incrementally to allow flexibility, continuous improvement, and better progress tracking during development.
+The system is developed incrementally to allow flexibility, continuous improvement, and better progress tracking throughout the development process.
+
+## System Design
+
+### Use Case Diagram
+Below is the use case diagram illustrating system interaction:
+
+![Use Case Diagram](diagrams/usecase_delivery_order.png)
+
+### Activity Diagram
+Below is the activity diagram showing the workflow of the delivery order process:
+
+![Activity Diagram](diagrams/activity_delivery_order.png)
 
 ## Team Members
 - **Alfarid Ridwan** – Project Manager / Developer  
-- **Susi Septiyani** – Developer  
+- **Susi** – Developer  
 
 ## Tools and Technologies
-- Git & GitHub (version control)
-- Programming language / framework: (to be updated)
+- Git & GitHub (version control and collaboration)
+- Programming language / framework: to be determined
 
 ## Project Status
 Status: **In Progress**
 
-The development progress is tracked through GitHub commits and regular updates.
+The project is currently in the design and early development phases.  
+Progress is tracked through GitHub commits and regular updates.
 
-## Repository Purpose
+## Repository Contents
 This repository contains:
-- Source code of the Delivery Order System
 - Project documentation
-- Development progress history
+- System design diagrams
+- Source code of the Delivery Order System
