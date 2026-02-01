@@ -2,35 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Delivery Order</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <h1>Create Delivery Order</h1>
 
-    <form method="post">
-        <label for="order_id">Order ID:</label><br>
-        <input
-            type="text"
-            id="order_id"
-            name="order_id"
-            placeholder="Enter order ID"
-            required
-        ><br><br>
+    <div class="container">
+        <h1>Create Delivery Order</h1>
 
-        <label for="customer_name">Customer Name:</label><br>
-        <input
-            type="text"
-            id="customer_name"
-            name="customer_name"
-            placeholder="Enter customer name"
-            required
-        ><br><br>
+        <form method="post">
+            <div class="form-group">
+                <label for="customer_name">Customer Name</label>
+                <input
+                    type="text"
+                    id="customer_name"
+                    name="customer_name"
+                    required
+                >
+            </div>
 
-        <button type="submit">Submit</button>
-    </form>
+            <div class="form-group">
+                <label for="order_date">Order Date</label>
+                <input
+                    type="date"
+                    id="order_date"
+                    name="order_date"
+                    required
+                >
+            </div>
 
-    <br>
-    <a href="/">Back to List</a>
+            <div class="form-actions">
+                <button type="submit">Submit</button>
+                <a href="/" class="btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+
 </body>
 </html>

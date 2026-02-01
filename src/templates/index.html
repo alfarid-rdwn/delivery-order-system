@@ -3,22 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delivery Order List</title>
+    <title>Delivery Order System</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <h1>Delivery Order List</h1>
 
-    <a href="/create">Create New Delivery Order</a>
+<header>
+    <h2>Delivery Order System</h2>
+</header>
 
-    <ul>
-        {% for order in orders %}
-        <li>
-            {{ order.order_id }} - {{ order.customer_name }} - {{ order.status }}
-            {% if order.status == 'Pending' %}
-                <a href="/update/{{ order.order_id }}">Mark as Delivered</a>
-            {% endif %}
-        </li>
-        {% endfor %}
-    </ul>
+<div class="container">
+    <a href="/create" class="button">Create Delivery Order</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Customer Name</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td>{{ order.order_id }}</td>
+                <td>{{ order.customer_name }}</td>
+                <td class="{% if order.status == 'Pending' %}status-pending{% else %}status-delivered{% endif %}">
+                    {{ order.status }}
+                </td>
+                <td>
+                    {% if order.status == 'Pending' %}
+                        <a href="/update/{{ order.order_id }}">Mark as Delivered</a>
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
 </body>
 </html>

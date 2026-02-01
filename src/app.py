@@ -1,33 +1,23 @@
 from flask import Flask, render_template, request, redirect, url_for
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder="templates", static_folder="static")
 
-delivery_orders = []
-
-@app.route('/')
+@app.route("/")
 def index():
-    return render_template('index.html', orders=delivery_orders)
+    return render_template("index.html")
 
-@app.route('/create', methods=['GET', 'POST'])
-def create_order():
-    if request.method == 'POST':
-        order = {
-            'order_id': request.form['order_id'],
-            'customer_name': request.form['customer_name'],
-            'status': 'Pending'
-        }
-        delivery_orders.append(order)
-        return redirect(url_for('index'))
+@app.route("/create", methods=["GET", "POST"])
+def create():
+    if request.method == "POST":
+        customer_name = request.form.get("customer_name")
+        order_date = request.form.get("order_date")
 
-    return render_template('create_order.html')
+        # sementara kita print dulu (Sprint 2)
+        print(customer_name, order_date)
 
-@app.route('/update/<order_id>')
-def update_status(order_id):
-    for order in delivery_orders:
-        if order['order_id'] == order_id:
-            order['status'] = 'Delivered'
-            break
-    return redirect(url_for('index'))
+        return redirect(url_for("index"))
 
-if __name__ == '__main__':
+    return render_template("create_order.html")
+
+if __name__ == "__main__":
     app.run(debug=True)
