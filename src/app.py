@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
-# temporary storage 
 delivery_orders = []
 
 @app.route('/')
@@ -21,6 +20,14 @@ def create_order():
         return redirect(url_for('index'))
 
     return render_template('create_order.html')
+
+@app.route('/update/<order_id>')
+def update_status(order_id):
+    for order in delivery_orders:
+        if order['order_id'] == order_id:
+            order['status'] = 'Delivered'
+            break
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True)

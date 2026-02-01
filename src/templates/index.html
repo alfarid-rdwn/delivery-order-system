@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Delivery Order List</title>
 </head>
 <body>
@@ -11,9 +12,12 @@
 
     <ul>
         {% for order in orders %}
-            <li>
-                {{ order.order_id }} - {{ order.customer_name }} - {{ order.status }}
-            </li>
+        <li>
+            {{ order.order_id }} - {{ order.customer_name }} - {{ order.status }}
+            {% if order.status == 'Pending' %}
+                <a href="/update/{{ order.order_id }}">Mark as Delivered</a>
+            {% endif %}
+        </li>
         {% endfor %}
     </ul>
 </body>
