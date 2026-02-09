@@ -2,18 +2,22 @@ from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
 
+# temporary storage (Sprint 3)
+orders = []
+
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("index.html", orders=orders)
 
 @app.route("/create", methods=["GET", "POST"])
 def create():
     if request.method == "POST":
-        customer_name = request.form.get("customer_name")
-        order_date = request.form.get("order_date")
+        order = {
+            "customer_name": request.form.get("customer_name"),
+            "order_date": request.form.get("order_date")
+        }
 
-        # sementara kita print dulu (Sprint 2)
-        print(customer_name, order_date)
+        orders.append(order)
 
         return redirect(url_for("index"))
 
