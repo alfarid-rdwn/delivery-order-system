@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for
 from database import get_connection, init_db
 
+# Initialize Flask application
 app = Flask(__name__, template_folder="templates", static_folder="static")
 
+# Initialize database
 init_db()
 
 @app.route("/")
